@@ -13,24 +13,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RoyLiou/space-travel.git"
+    "url": "git+https://github.com/RoyLiou/space-travel-server.git"
   },
   "author": "Roy Liu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RoyLiou/space-travel/issues"
+    "url": "https://github.com/RoyLiou/space-travel-server/issues"
   },
-  "homepage": "https://github.com/RoyLiou/space-travel#readme",
+  "homepage": "https://github.com/RoyLiou/space-travel-server#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-commit": "lint-staged && yarn run type-check"
     }
   },
   "lint-staged": {
     "*.@(js|ts|tsx)": [
       "yarn lint",
-      "yarn format",
-      "yarn type-check"
+      "yarn format"
     ]
   },
   "dependencies": {
@@ -53,7 +53,7 @@
     "@typescript-eslint/parser": "^4.3.0",
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.17",
-    "cz-conventional-changelog": "^3.3.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -70,5 +70,10 @@
       "/node_modules/",
       "/__utils"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
