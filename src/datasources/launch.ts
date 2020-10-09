@@ -10,6 +10,8 @@ class launchAPI extends RESTDataSource {
     return {
       id: launch.flight_number || 0,
       cursor: `${launch.date_unix}`,
+      launchpad: launch.launchpad,
+      rocket: launch.rocket,
     };
   }
 
@@ -18,6 +20,17 @@ class launchAPI extends RESTDataSource {
     return Array.isArray(response)
       ? response.map((launch) => this.launchReducer(launch))
       : [];
+  }
+
+  async getLaunchById({ launchId }: { launchId: number }) {
+    const response = await this.get('launches', { flight_number: launchId });
+    return this.launchReducer(response[0]);
+  }
+
+  getLaunchesByIds({ launchIds }: { launchIds: number[] }) {
+    return Promise.all(
+      launchIds.map((launchId) => this.getLaunchById({ launchId }))
+    );
   }
 }
 
