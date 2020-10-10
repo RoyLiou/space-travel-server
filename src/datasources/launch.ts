@@ -1,4 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+import { LaunchType } from '../../custom';
 
 class launchAPI extends RESTDataSource {
   constructor() {

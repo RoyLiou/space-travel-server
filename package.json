@@ -42,8 +42,9 @@
     "esm": "^3.2.25",
     "graphql": "^15.3.0",
     "isemail": "^3.2.0",
-    "mongoose": "^5.10.7",
     "nodemon": "^2.0.4",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0",
     "ts-node": "^9.0.0"
   },
   "devDependencies": {
