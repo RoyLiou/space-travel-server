@@ -5,11 +5,13 @@ type StoreType = {
   trips: ModelCtor;
 };
 
+type UserType = {
+  id: number;
+  email: string;
+};
+
 type ContextType = {
-  user: {
-    id: number;
-    email: string;
-  } | null;
+  user: UserType | null;
 };
 
 type LaunchType = {
