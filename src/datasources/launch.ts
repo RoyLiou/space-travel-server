@@ -12,7 +12,9 @@ class launchAPI extends RESTDataSource {
       id: launch.flight_number || 0,
       cursor: `${launch.date_unix}`,
       launchpad: launch.launchpad,
+      name: launch.name,
       rocket: launch.rocket,
+      details: launch.details,
     };
   }
 

@@ -19,6 +19,8 @@ type LaunchType = {
   date_unix: number;
   rocket: string;
   launchpad: string;
+  details: string;
+  name: string;
 };
 
 type TripType = {
@@ -27,4 +29,10 @@ type TripType = {
   updatedAt: string;
   launchId: string;
   userId: number;
+};
+
+type LaunchConnection = {
+  cursor: string;
+  hasMore: boolean;
+  launches: LaunchType[];
 };

@@ -3,9 +3,9 @@ import { gql } from 'apollo-server';
 const typeDefs = gql`
   type Launch {
     id: ID!
-    site: String
-    mission: Mission
-    rocket: Rocket
+    launchpad: String
+    details: String
+    rocket: String
     isBooked: Boolean!
   }
 
@@ -32,9 +32,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    launches: [Launch]!
+    launches(pageSize: Int, after: String): LaunchConnection!
     launch(id: ID!): Launch
     me: User
+  }
+
+  type LaunchConnection {
+    cursor: String!
+    hasMore: Boolean!
+    launches: [Launch]!
   }
 
   type Mutation {
